@@ -1,38 +1,16 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* 
+ * 커스텀 CSS는 index.css로 이동되었습니다.
+ * 모든 토스 스타일 클래스는 index.css의 @layer를 통해 정의되어 있습니다.
+ * 
+ * 사용 가능한 클래스:
+ * - .toss-button: 토스 스타일 버튼
+ * - .toss-card: 토스 스타일 카드
+ * - .toss-input: 토스 스타일 입력 필드
+ * - .toss-heading, .toss-text-primary, .toss-text-secondary, .toss-text-tertiary
+ * - .toss-gradient-text: 그라데이션 텍스트
+ * - .toss-badge, .toss-badge-primary, .toss-badge-success
+ * - .toss-shadow-sm, .toss-shadow-md, .toss-shadow-lg
+ * - .toss-fade-in, .toss-scale-in: 애니메이션
+ * - .postit: 포스트잇 스타일
+ * - .modal-overlay: 모달 오버레이
+ */

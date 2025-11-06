@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# 너의 수능을 응원해! 🎓
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+친구들이 응원 메시지를 남길 수 있는 온라인 롤링페이퍼 서비스입니다.
 
-## Available Scripts
+## ✨ 주요 기능
 
-In the project directory, you can run:
+- **화이트보드 페이지 생성**: 각 사용자는 고유한 URL(`/board/:id`)을 가집니다
+- **응원글 작성**: 닉네임과 응원 문구를 입력하여 포스트잇 형태로 추가
+- **포스트잇 랜덤 배치**: 자연스럽게 흩뿌려진 형태로 배치되며 랜덤 회전 효과 적용
+- **클릭 시 확대 모달**: 포스트잇 클릭 시 확대되어 응원 문구를 자세히 확인
+- **Firebase Firestore 연동**: 실시간 데이터 동기화
+- **반응형 UI**: 모바일부터 데스크탑까지 완벽 대응
 
-### `npm start`
+## 🚀 시작하기
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. 저장소 클론 및 의존성 설치
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+### 2. Firebase 설정
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. [Firebase Console](https://console.firebase.google.com/)에서 새 프로젝트 생성
+2. Firestore Database 활성화 (테스트 모드 또는 프로덕션 모드)
+3. `.env.example` 파일을 `.env`로 복사하고 Firebase 설정 값 입력:
 
-### `npm run build`
+```bash
+cp .env.example .env
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`.env` 파일에 Firebase 설정 정보를 입력하세요:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+REACT_APP_FIREBASE_API_KEY=your_api_key_here
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_app_id
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. 개발 서버 실행
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 확인하세요.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📦 기술 스택
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **React** - UI 라이브러리
+- **React Router** - 라우팅
+- **Firebase Firestore** - 실시간 데이터베이스
+- **Tailwind CSS** - 스타일링
+- **Framer Motion** - 애니메이션
+- **UUID** - 고유 ID 생성
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🏗️ 프로젝트 구조
 
-## Learn More
+```
+suportwall/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/          # 재사용 가능한 컴포넌트
+│   │   ├── PostIt.jsx       # 포스트잇 컴포넌트
+│   │   ├── PostItModal.jsx  # 포스트잇 확대 모달
+│   │   ├── AddPostForm.jsx  # 응원 메시지 작성 폼
+│   │   └── Modal.jsx        # 기본 모달 컴포넌트
+│   ├── pages/               # 페이지 컴포넌트
+│   │   ├── Home.jsx         # 홈 페이지 (보드 생성)
+│   │   └── BoardView.jsx    # 보드 보기 페이지
+│   ├── config/              # 설정 파일
+│   │   └── firebase.js      # Firebase 초기화
+│   ├── utils/               # 유틸리티 함수
+│   │   ├── constants.js     # 상수 정의
+│   │   └── helpers.js       # 헬퍼 함수
+│   ├── App.jsx              # 메인 앱 컴포넌트
+│   ├── App.css
+│   ├── index.js             # 엔트리 포인트
+│   └── index.css            # 전역 스타일
+├── .env.example             # 환경 변수 예시
+├── vercel.json              # Vercel 배포 설정
+└── package.json
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚢 배포
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Vercel 배포
 
-### Code Splitting
+1. [Vercel](https://vercel.com)에 프로젝트 연결
+2. 환경 변수 설정 (Vercel 대시보드에서 `.env` 파일의 값들을 추가)
+3. 자동 배포 완료!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Firebase Hosting 배포
 
-### Analyzing the Bundle Size
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+npm run build
+firebase deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📝 Firestore 데이터 구조
 
-### Making a Progressive Web App
+```
+boards/
+  {boardId}/
+    owner: string
+    theme: string
+    ddayTarget: string (YYYY-MM-DD)
+    createdAt: timestamp
+    notes/
+      {noteId}/
+        nickname: string
+        message: string
+        x: number (퍼센트)
+        y: number (퍼센트)
+        rotation: number (도)
+        color: string (HEX)
+        createdAt: timestamp
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🎨 커스터마이징
 
-### Advanced Configuration
+### 포스트잇 색상 변경
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`src/utils/constants.js` 파일의 `POSTIT_COLORS` 배열을 수정하세요.
 
-### Deployment
+### 테마 추가
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`src/utils/constants.js` 파일의 `THEMES` 객체에 새 테마를 추가하세요.
 
-### `npm run build` fails to minify
+## 📄 라이선스
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
