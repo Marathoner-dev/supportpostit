@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "supportpostit.vercel.app/(.*)",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
