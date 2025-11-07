@@ -11,35 +11,6 @@ export function computeDDay(targetISO) {
   return `D+${Math.abs(diff)}`;
 }
 
-// 두 사각형이 겹치는지 확인하는 함수
-function checkRectOverlap(rect1, rect2) {
-  return !(
-    rect1.right < rect2.left ||
-    rect1.left > rect2.right ||
-    rect1.bottom < rect2.top ||
-    rect1.top > rect2.bottom
-  );
-}
-
-// 회전된 사각형의 바운딩 박스 계산
-function getRotatedBounds(centerX, centerY, width, height, rotation) {
-  const rad = (rotation * Math.PI) / 180;
-  const cos = Math.abs(Math.cos(rad));
-  const sin = Math.abs(Math.sin(rad));
-  
-  const rotatedWidth = width * cos + height * sin;
-  const rotatedHeight = width * sin + height * cos;
-  
-  return {
-    left: centerX - rotatedWidth / 2,
-    right: centerX + rotatedWidth / 2,
-    top: centerY - rotatedHeight / 2,
-    bottom: centerY + rotatedHeight / 2,
-    width: rotatedWidth,
-    height: rotatedHeight
-  };
-}
-
 // 메시지 길이에 따른 포스트잇 크기 계산
 export function calculatePostItSize(messageLength = 0) {
   const baseWidth = 120;

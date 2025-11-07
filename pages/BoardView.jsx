@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "../contexts/AuthContext";
 import { db } from "../config/firebase";
@@ -18,9 +18,19 @@ import PostItModal from "../components/PostItModal";
 import AddPostForm from "../components/AddPostForm";
 import { computeDDay, generateRandomPosition, generateRandomRotation, getRandomColor } from "../utils/helpers";
 
+const parsePageParam = (params) => {
+  if (!params) return 0;
+  const value = Number(params.get("page"));
+  if (!Number.isFinite(value) || value < 0) {
+    return 0;
+  }
+  return Math.floor(value);
+};
+
 const BoardView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { user, signOut } = useAuth();
   const [board, setBoard] = useState(null);
   const [posts, setPosts] = useState([]);
@@ -29,8 +39,46 @@ const BoardView = () => {
   const [isOwner, setIsOwner] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPageState] = useState(() => parsePageParam(searchParams));
   const boardRef = useRef(null);
+
+  const updatePageParam = useCallback(
+    (page, replace = false) => {
+      const normalized = Math.max(0, Math.floor(page));
+      const params = new URLSearchParams(searchParams);
+
+      if (normalized > 0) {
+        params.set("page", String(normalized));
+      } else {
+        params.delete("page");
+      }
+
+      if (params.toString() !== searchParams.toString()) {
+        setSearchParams(params, { replace });
+      }
+    },
+    [searchParams, setSearchParams]
+  );
+
+  const setCurrentPage = useCallback(
+    (page, options = {}) => {
+      const normalized = Math.max(0, Math.floor(page));
+
+      if (normalized !== currentPage) {
+        setCurrentPageState(normalized);
+      }
+
+      updatePageParam(normalized, options.replace ?? false);
+    },
+    [currentPage, updatePageParam]
+  );
+
+  useEffect(() => {
+    const pageFromUrl = parsePageParam(searchParams);
+    if (pageFromUrl !== currentPage) {
+      setCurrentPageState(pageFromUrl);
+    }
+  }, [searchParams, currentPage]);
 
   // 화면 크기 감지
   useEffect(() => {
@@ -84,7 +132,7 @@ const BoardView = () => {
       if (postsData.length > 0) {
         const lastPost = postsData[postsData.length - 1];
         if (lastPost.page !== undefined) {
-          setCurrentPage(lastPost.page);
+          setCurrentPage(lastPost.page, { replace: true });
         }
       }
     });
