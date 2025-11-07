@@ -1,0 +1,13 @@
+{
+  "buildCommand": "cd suportwall && npm install && npm run build",
+  "outputDirectory": "suportwall/build",
+  "installCommand": "cd suportwall && npm install",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
