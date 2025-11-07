@@ -1,0 +1,470 @@
+/* 순수 CSS - Tailwind 제거 */
+
+/* 기본 리셋 및 전역 스타일 */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFDF7;
+  color: #333333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 커스텀 스크롤바 (토스 스타일) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFDF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F6BD60;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFB703;
+}
+
+/* 스크롤바 숨기기 (칠판용) */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* 포커스 스타일 (접근성) */
+*:focus-visible {
+  outline: 2px solid #FFB703;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 선택 텍스트 스타일 */
+::selection {
+  background: rgba(255, 183, 3, 0.3);
+  color: #333333;
+}
+
+/* 컴포넌트 스타일 */
+/* 부드러운 전환 효과 */
+.toss-transition {
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 토스 버튼 스타일 */
+.toss-button {
+  background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toss-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+}
+
+.toss-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toss-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  }
+
+  /* 토스 카드 스타일 */
+.toss-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+.toss-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+/* 토스 입력 필드 스타일 */
+.toss-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-size: 15px;
+  color: #333333;
+  background: #FFFDF7;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toss-input:hover {
+  background: white;
+  border-color: #F6BD60;
+}
+
+.toss-input:focus {
+  outline: none;
+  border-color: #FFB703;
+  box-shadow: 0 0 0 3px rgba(255, 183, 3, 0.2);
+  background: white;
+}
+
+.toss-input::placeholder {
+  color: #999999;
+}
+
+/* 토스 텍스트 스타일 */
+.toss-heading {
+  font-weight: 700;
+  color: #333333;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.toss-text-primary {
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.toss-text-secondary {
+  color: #666666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.toss-text-tertiary {
+  color: #999999;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 토스 그라데이션 텍스트 */
+.toss-gradient-text {
+  background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 토스 배지/태그 스타일 */
+.toss-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #FFFDF7;
+  color: #666666;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.toss-badge-primary {
+  background: #FFB703;
+  color: white;
+  border: none;
+}
+
+.toss-badge-success {
+  background: #84A59D;
+  color: white;
+  border: none;
+}
+
+  /* 토스 구분선 */
+.toss-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  margin: 0;
+}
+
+/* 포스트잇 커스텀 스타일 */
+.postit {
+  position: absolute;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.postit:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+  /* 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  }
+
+  /* 로딩 스피너 */
+.toss-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  }
+
+/* 유틸리티 클래스 (Tailwind 대체) */
+
+/* Flexbox */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+
+/* Spacing */
+.p-2 { padding: 0.5rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Layout */
+.w-full { width: 100%; }
+.w-5 { width: 1.25rem; }
+.w-6 { width: 1.5rem; }
+.h-5 { height: 1.25rem; }
+.h-6 { height: 1.5rem; }
+.min-h-screen { min-height: 100vh; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-6xl { max-width: 72rem; }
+.flex-1 { flex: 1 1 0%; }
+
+/* Typography */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; }
+.text-6xl { font-size: 3.75rem; line-height: 1; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+.font-extrabold { font-weight: 800; }
+.font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+/* Colors */
+.bg-white { background-color: white; }
+.bg-gray-50 { background-color: #f9fafb; }
+.text-white { color: white; }
+.text-gray-400 { color: #9ca3af; }
+.text-gray-500 { color: #6b7280; }
+
+/* Border & Radius */
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+.border { border-width: 1px; }
+.border-2 { border-width: 2px; }
+
+/* Shadow */
+.shadow-sm { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+.shadow-md { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+.shadow-lg { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); }
+.shadow-xl { box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); }
+.shadow-2xl { box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1); }
+
+/* Position */
+.absolute { position: absolute; }
+.relative { position: relative; }
+.fixed { position: fixed; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+/* Display */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+/* Overflow */
+.overflow-hidden { overflow: hidden; }
+
+/* Z-index */
+.z-10 { z-index: 10; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* Cursor */
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+/* Transition */
+.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+
+/* 토스 그림자 유틸리티 */
+.toss-shadow-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toss-shadow-md {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toss-shadow-lg {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 애니메이션 */
+@keyframes blob {
+  0% {
+  transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+  transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+  transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+  transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes toss-fade-in {
+  from {
+  opacity: 0;
+  transform: translateY(8px);
+  }
+  to {
+  opacity: 1;
+  transform: translateY(0);
+  }
+}
+
+@keyframes toss-scale-in {
+  from {
+  opacity: 0;
+  transform: scale(0.95);
+  }
+  to {
+  opacity: 1;
+  transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+  transform: rotate(360deg);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.toss-fade-in {
+  animation: toss-fade-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toss-scale-in {
+  animation: toss-scale-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 반응형 유틸리티 */
+@media (max-width: 768px) {
+.md\:p-6 { padding: 1.5rem; }
+.md\:p-12 { padding: 3rem; }
+.md\:flex-row { flex-direction: row; }
+.md\:text-left { text-align: left; }
+.md\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.md\:text-5xl { font-size: 3rem; line-height: 1; }
+.md\:text-7xl { font-size: 4.5rem; line-height: 1; }
+.md\:justify-start { justify-content: flex-start; }
+  
+.toss-card {
+  padding: 16px;
+  border-radius: 12px;
+  }
+  
+.toss-button {
+  padding: 12px 20px;
+  font-size: 14px;
+  }
+}
+
