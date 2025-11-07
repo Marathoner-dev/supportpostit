@@ -2,11 +2,11 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "installCommand": "npm install",
-  "framework": null,
+  "framework": "create-react-app",
   "rewrites": [
     {
-      "source": "/board/*",
-      "destination": "/"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
