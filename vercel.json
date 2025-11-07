@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run build --prefix suportwall",
-  "outputDirectory": "suportwall/build",
-  "installCommand": "npm install --prefix suportwall",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "installCommand": "npm install",
   "framework": null,
   "rewrites": [
     {
